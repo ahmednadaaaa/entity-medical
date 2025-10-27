@@ -1,0 +1,523 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} - Entity Medical{% endblock %}
+
+{% block extra_css %}
+<style>
+    .product-details-section {
+        margin-top: 80px;
+        padding: 4rem 0;
+        background: linear-gradient(135deg, var(--very-light-blue) 0%, var(--light-blue) 100%);
+        min-height: 100vh;
+    }
+
+    .product-details-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 2rem;
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 0.8rem 1.5rem;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(27, 155, 216, 0.1);
+    }
+
+    .back-link:hover {
+        background: #1B2848;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(27, 40, 72, 0.3);
+    }
+
+    .product-details-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 4rem;
+    }
+
+    .product-images {
+        position: relative;
+    }
+
+    .main-image {
+        width: 100%;
+        height: 450px;
+        background: linear-gradient(135deg, var(--light-blue) 0%, var(--very-light-blue) 100%);
+        border-radius: 20px;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 15px 35px rgba(27, 155, 216, 0.2);
+        overflow: hidden;
+    }
+
+    .main-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .main-image i {
+        font-size: 8rem;
+        color: var(--secondary-color);
+        opacity: 0.7;
+    }
+
+    .thumbnail-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .thumbnail {
+        width: 100%;
+        height: 80px;
+        background: linear-gradient(135deg, var(--light-blue) 0%, var(--very-light-blue) 100%);
+        border-radius: 12px;
+        cursor: pointer;
+        overflow: hidden;
+        border: 3px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .thumbnail:hover,
+    .thumbnail.active {
+        border-color: var(--secondary-color);
+        transform: scale(1.05);
+    }
+
+    .thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .product-info {
+        padding: 3rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(27, 155, 216, 0.15);
+    }
+
+    .product-title {
+        color: var(--secondary-color);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 800;
+    }
+
+    .product-brand {
+        color: var(--text-color);
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        padding: 0.8rem 1.5rem;
+        background: var(--light-blue);
+        border-radius: 15px;
+        display: inline-block;
+    }
+
+    .product-price {
+        color: var(--secondary-color);
+        font-size: 2rem;
+        font-weight: 800;
+        margin-bottom: 2rem;
+        padding: 1rem 2rem;
+        background: linear-gradient(135deg, var(--light-blue) 0%, var(--very-light-blue) 100%);
+        border-radius: 15px;
+        display: inline-block;
+    }
+
+    .old-price {
+        text-decoration: line-through;
+        color: #999;
+        font-size: 1.2rem;
+        margin-left: 1rem;
+    }
+
+    .discount-badge {
+        background: #ff4444;
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.9rem;
+        margin-right: 0.5rem;
+    }
+
+    .product-description {
+        color: var(--text-color);
+        line-height: 1.8;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+    }
+
+    .product-meta {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        background: rgba(27, 155, 216, 0.05);
+        border-radius: 10px;
+        flex-wrap: wrap;
+    }
+
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .meta-item i {
+        color: var(--secondary-color);
+    }
+
+    .product-features {
+        margin-bottom: 2rem;
+    }
+
+    .product-features h3 {
+        color: var(--secondary-color);
+        margin-bottom: 1.5rem;
+        font-size: 1.4rem;
+        font-weight: 700;
+    }
+
+    .features-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .features-list li {
+        margin-bottom: 1rem;
+        padding: 0.8rem 1.5rem;
+        background: rgba(27, 155, 216, 0.05);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+
+    .features-list li:hover {
+        background: rgba(27, 155, 216, 0.1);
+        transform: translateX(-5px);
+    }
+
+    .features-list li i {
+        color: var(--secondary-color);
+        margin-left: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .product-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .add-to-cart-btn {
+        background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+        color: #1B2848;
+        border: none;
+        padding: 1.2rem 2.5rem;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+    }
+
+    .add-to-cart-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(255, 215, 0, 0.6);
+    }
+
+    .order-button {
+        display: inline-flex;
+        align-items: center;
+        padding: 1.2rem 2.5rem;
+        background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.4s ease;
+        font-size: 1.1rem;
+        font-weight: 700;
+        gap: 0.5rem;
+    }
+
+    .order-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(27, 40, 72, 0.4);
+    }
+
+    .related-products {
+        margin-top: 4rem;
+    }
+
+    .related-products h2 {
+        color: var(--secondary-color);
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        font-weight: 800;
+    }
+
+    .related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .related-product-card {
+        background: white;
+        border-radius: 15px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .related-product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    .related-product-card img,
+    .related-product-card .placeholder {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+    }
+
+    .related-product-card .placeholder {
+        background: linear-gradient(135deg, var(--light-blue) 0%, var(--very-light-blue) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .related-product-card h3 {
+        color: var(--secondary-color);
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .related-product-card .price {
+        color: var(--secondary-color);
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .product-details-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .product-info {
+            padding: 2rem;
+        }
+        
+        .product-title {
+            font-size: 2rem;
+        }
+
+        .thumbnail-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .product-actions {
+            flex-direction: column;
+        }
+
+        .add-to-cart-btn,
+        .order-button {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="product-details-section">
+    <div class="product-details-container">
+        <a href="{% url 'products:home' %}" class="back-link">
+            <i class="fas fa-arrow-right"></i>
+            العودة إلى المنتجات
+        </a>
+        
+        <div class="product-details-grid">
+            <div class="product-images">
+                <div class="main-image">
+                    {% if product.images.all.first %}
+                        <img id="mainImage" src="{{ product.images.all.first.image.url }}" alt="{{ product.name }}">
+                    {% elif product.image %}
+                        <img id="mainImage" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                        <i class="fas fa-box"></i>
+                    {% endif %}
+                </div>
+                
+                {% if product.images.count > 1 %}
+                <div class="thumbnail-grid">
+                    {% for image in product.images.all %}
+                    <div class="thumbnail {% if forloop.first %}active{% endif %}" 
+                         onclick="changeImage('{{ image.image.url }}', this)">
+                        <img src="{{ image.image.url }}" alt="{{ product.name }}">
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="product-info">
+                <h1 class="product-title">{{ product.name }}</h1>
+                
+                {% if product.brand %}
+                <div class="product-brand">
+                    <i class="fas fa-building"></i>
+                    الشركة المصنعة: <strong>{{ product.brand.name }}</strong>
+                </div>
+                {% endif %}
+                
+                <div class="product-price">
+                    {% if product.discount_percentage > 0 %}
+                        <span class="old-price">{{ product.price|floatformat:0 }} جنيه</span>
+                        <span class="price">{{ product.final_price|floatformat:0 }} جنيه</span>
+                        <span class="discount-badge">خصم {{ product.discount_percentage|floatformat:0 }}%</span>
+                    {% else %}
+                        <span class="price">{{ product.price|floatformat:0 }} جنيه</span>
+                    {% endif %}
+                </div>
+
+                <div class="product-meta">
+                    {% if product.category %}
+                    <div class="meta-item">
+                        <i class="fas fa-tag"></i>
+                        <span>{{ product.category.name }}</span>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="meta-item">
+                        <i class="fas fa-eye"></i>
+                        <span>{{ product.views }} مشاهدة</span>
+                    </div>
+                    
+                    {% if product.stock > 0 %}
+                    <div class="meta-item">
+                        <i class="fas fa-check-circle" style="color: green;"></i>
+                        <span>متوفر في المخزون</span>
+                    </div>
+                    {% else %}
+                    <div class="meta-item">
+                        <i class="fas fa-times-circle" style="color: red;"></i>
+                        <span>غير متوفر حالياً</span>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div class="product-description">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">وصف المنتج</h3>
+                    <p>{{ product.description|linebreaks }}</p>
+                </div>
+                
+                {% if product.features_list %}
+                <div class="product-features">
+                    <h3>المميزات الرئيسية</h3>
+                    <ul class="features-list">
+                        {% for feature in product.features_list %}
+                        <li>
+                            <i class="fas fa-check"></i>
+                            {{ feature }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                
+                <div class="product-actions">
+                    <a href="{% url 'contact:contact' %}" class="order-button">
+                        <i class="fas fa-phone"></i>
+                        اطلب الآن
+                    </a>
+                    <button class="add-to-cart-btn" onclick="addToCart('{{ product.name }}', {{ product.price }}, {{ product.id }})">
+                        <i class="fas fa-cart-plus"></i>
+                        أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- المنتجات المشابهة -->
+        {% if related_products %}
+        <div class="related-products">
+            <h2>منتجات مشابهة</h2>
+            <div class="related-grid">
+                {% for related in related_products %}
+                <div class="related-product-card">
+                    {% if related.images.all.first %}
+                        <img src="{{ related.images.all.first.image.url }}" alt="{{ related.name }}">
+                    {% elif related.image %}
+                        <img src="{{ related.image.url }}" alt="{{ related.name }}">
+                    {% else %}
+                        <div class="placeholder">
+                            <i class="fas fa-box" style="font-size: 4rem; color: var(--secondary-color);"></i>
+                        </div>
+                    {% endif %}
+                    <h3>{{ related.name }}</h3>
+                    <p class="price">
+                        {% if related.discount_percentage > 0 %}
+                            <span style="text-decoration: line-through; color: #999; font-size: 0.9rem;">{{ related.price|floatformat:0 }}</span>
+                            {{ related.final_price|floatformat:0 }} جنيه
+                        {% else %}
+                            {{ related.price|floatformat:0 }} جنيه
+                        {% endif %}
+                    </p>
+                    <a href="{% url 'products:detail' related.slug %}" class="order-button" style="margin-top: 1rem; font-size: 1rem; padding: 0.8rem 1.5rem;">
+                        <i class="fas fa-eye"></i>
+                        عرض التفاصيل
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // وظيفة تغيير الصورة الرئيسية
+    function changeImage(imageUrl, element) {
+        document.getElementById('mainImage').src = imageUrl;
+        
+        // تحديث الصورة النشطة
+        document.querySelectorAll('.thumbnail').forEach(thumb => {
+            thumb.classList.remove('active');
+        });
+        element.classList.add('active');
+    }
+</script>
+{% endblock %}

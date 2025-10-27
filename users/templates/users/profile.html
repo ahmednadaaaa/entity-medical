@@ -1,0 +1,510 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملف الشخصي - Entity Medical</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .profile-page {
+            padding: 120px 0 80px;
+        }
+
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            color: var(--secondary-color);
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(27, 155, 216, 0.1);
+        }
+
+        .page-header p {
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        .profile-sidebar {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(27, 155, 216, 0.1);
+            height: fit-content;
+        }
+
+        .profile-avatar {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .avatar-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 3rem;
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(27, 155, 216, 0.3);
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-phone {
+            color: #666;
+            font-size: 1rem;
+            direction: ltr;
+        }
+
+        .profile-stats {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-weight: 600;
+        }
+
+        .stat-value {
+            color: var(--secondary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .profile-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(27, 155, 216, 0.1);
+        }
+
+        .messages {
+            margin-bottom: 2rem;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 500;
+        }
+
+        .alert i {
+            font-size: 1.3rem;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffeaa7;
+        }
+
+        .section-title {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title i {
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .form-group label i {
+            margin-left: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e8f4f8;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Cairo', sans-serif;
+            background: #fafbfc;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--secondary-color);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(27, 155, 216, 0.1);
+        }
+
+        .form-group input:disabled {
+            background: #f0f0f0;
+            cursor: not-allowed;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(27, 155, 216, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .info-box i {
+            color: var(--secondary-color);
+            margin-left: 0.5rem;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: #1565c0;
+            font-weight: 500;
+        }
+
+        @media (max-width: 968px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .profile-page {
+                padding: 100px 0 60px;
+            }
+
+            .profile-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- القائمة العلوية -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'images/med image.jpg' %}" alt="Entity Medical Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">الرئيسية</a></li>
+                <li><a href="{% url 'products:home' %}">المنتجات</a></li>
+                <li><a href="{% url 'offers:list' %}">العروض</a></li>
+                <li><a href="{% url 'about' %}">حول</a></li>
+                <li><a href="{% url 'contact:contact' %}">تواصل معنا</a></li>
+                <li><a href="{% url 'users:profile' %}" class="active">الملف الشخصي</a></li>
+                <li><a href="{% url 'users:logout' %}">تسجيل الخروج</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- محتوى الصفحة -->
+    <section class="profile-page">
+        <div class="profile-container">
+            <div class="page-header">
+                <h1>الملف الشخصي</h1>
+                <p>إدارة معلوماتك الشخصية وإعدادات حسابك</p>
+            </div>
+
+            <div class="profile-grid">
+                <!-- الشريط الجانبي -->
+                <div class="profile-sidebar">
+                    <div class="profile-avatar">
+                        <div class="avatar-circle">
+                            {{ user.full_name|slice:":1"|upper }}
+                        </div>
+                        <div class="profile-name">{{ user.full_name }}</div>
+                        <div class="profile-phone">{{ user.phone }}</div>
+                    </div>
+
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">
+                                <i class="fas fa-calendar"></i> تاريخ الانضمام
+                            </span>
+                            <span class="stat-value">{{ user.date_joined|date:"Y/m/d" }}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">
+                                <i class="fas fa-shopping-bag"></i> الطلبات
+                            </span>
+                            <span class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">
+                                <i class="fas fa-heart"></i> المفضلة
+                            </span>
+                            <span class="stat-value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- المحتوى الرئيسي -->
+                <div class="profile-content">
+                    {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {% if message.tags == 'success' %}
+                                <i class="fas fa-check-circle"></i>
+                            {% elif message.tags == 'warning' %}
+                                <i class="fas fa-exclamation-triangle"></i>
+                            {% elif message.tags == 'error' %}
+                                <i class="fas fa-times-circle"></i>
+                            {% endif %}
+                            <span>{{ message }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <h2 class="section-title">
+                        <i class="fas fa-user-edit"></i>
+                        تعديل المعلومات الشخصية
+                    </h2>
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="full_name">
+                                    <i class="fas fa-user"></i> الاسم الكامل
+                                </label>
+                                <input type="text" name="full_name" id="full_name" value="{{ user.full_name }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">
+                                    <i class="fas fa-phone"></i> رقم الهاتف
+                                </label>
+                                <input type="tel" name="phone" id="phone" value="{{ user.phone }}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">
+                                <i class="fas fa-envelope"></i> البريد الإلكتروني
+                            </label>
+                            <input type="email" name="email" id="email" value="{{ user.email }}" placeholder="أضف بريدك الإلكتروني">
+                        </div>
+
+                        <div class="info-box">
+                            <p>
+                                <i class="fas fa-info-circle"></i>
+                                رقم الهاتف لا يمكن تعديله. للتغيير، يرجى التواصل مع الدعم الفني.
+                            </p>
+                        </div>
+
+                        <h2 class="section-title">
+                            <i class="fas fa-lock"></i>
+                            تغيير كلمة المرور
+                        </h2>
+
+                        <div class="form-group">
+                            <label for="new_password">
+                                <i class="fas fa-key"></i> كلمة المرور الجديدة
+                            </label>
+                            <input type="password" name="new_password" id="new_password" placeholder="اتركها فارغة إذا لم ترغب في التغيير">
+                        </div>
+
+                        <div class="info-box">
+                            <p>
+                                <i class="fas fa-shield-alt"></i>
+                                كلمة المرور يجب أن تكون 6 أحرف على الأقل. سيتم تسجيل خروجك بعد التغيير.
+                            </p>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                حفظ التغييرات
+                            </button>
+                            <a href="/" class="btn btn-secondary">
+                                <i class="fas fa-times"></i>
+                                إلغاء
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Zahraa Nasr City - 2151</p>
+                        <p><i class="fas fa-phone"></i> <span style="direction: ltr;">+20 101 392 8114</span></p>
+                        <p><i class="fas fa-envelope"></i> entityeg21@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>تابعنا</h3>
+                    <p>ابق على اطلاع بأحدث منتجاتنا وعروضنا</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/201013928114" target="_blank" class="social-link whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/+201013928114" target="_blank" class="social-link telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100064583177086" target="_blank" class="social-link facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/moelshekh" target="_blank" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Entity Medical. جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

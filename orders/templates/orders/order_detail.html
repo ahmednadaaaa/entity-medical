@@ -1,0 +1,48 @@
+{% extends 'base.html' %}{% load static %}
+
+    تفاصيل الطلب #{{ order.order_number }}
+    الحالة: {{ order.get_status_display }}
+    التاريخ: {{ order.created_at|date:"d/m/Y H:i" }}
+    المبلغ الإجمالي: {{ order.total_amount }} جنيه
+    تفاصيل العميل
+    الاسم: {{ order.full_name }}
+    الهاتف: {{ order.phone }}
+    البريد: {{ order.email }}
+    العنوان: {{ order.address }}
+    ملاحظات: {{ order.notes }}
+    عناصر الطلب
+    
+        {% for item in order.items.all %}
+            
+                {{ item.product_name }} x {{ item.quantity }} - {{ item.subtotal }} جنيه
+            
+        {% endfor %}
+    
+    تأكيد عبر واتساب
+
+
+
+.order-detail-page {
+    padding: 20px;
+    direction: rtl;
+}
+.order-items {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+}
+.order-item {
+    margin-bottom: 10px;
+}
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+.btn-success:hover {
+    background-color: #218838;
+}
+
+{% endblock %}

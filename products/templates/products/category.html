@@ -1,0 +1,486 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category.name }} - Entity Medical</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        .navbar .nav-links a {
+            font-weight: 500 !important;
+            font-size: 1rem !important;
+        }
+        
+        .offers-section {
+            margin-top: 80px;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--very-light-blue) 100%);
+            min-height: 100vh;
+        }
+
+        .offers-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--hover-color);
+            transform: translateX(-5px);
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 3rem;
+            font-size: 3rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(27, 155, 216, 0.2);
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(27, 155, 216, 0.3);
+        }
+
+        .category-description {
+            text-align: center;
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .offer-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(27, 155, 216, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            border: 2px solid rgba(27, 155, 216, 0.1);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(27, 40, 72, 0.25);
+            border-color: var(--secondary-color);
+        }
+
+        .offer-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #1B2848;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .offer-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--very-light-blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .offer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .offer-card:hover .offer-image img {
+            transform: scale(1.1);
+        }
+
+        .offer-content {
+            padding: 2rem;
+        }
+
+        .offer-content h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .offer-content p {
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .offer-price {
+            margin-bottom: 1.5rem;
+        }
+
+        .current-price {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .old-price {
+            font-size: 1.2rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-right: 1rem;
+        }
+
+        .offer-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .offer-features span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(27, 155, 216, 0.1);
+            color: var(--secondary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .offer-features i {
+            color: #28a745;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .details-btn {
+            flex: 1;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 15px rgba(27, 155, 216, 0.3);
+            text-decoration: none;
+        }
+
+        .details-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(27, 155, 216, 0.5);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+
+        .offer-btn {
+            flex: 1;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #1B2848;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .offer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+            background: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(27, 155, 216, 0.1);
+        }
+
+        .empty-state i {
+            font-size: 5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .offers-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .offer-content {
+                padding: 1.5rem;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- القائمة العلوية -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'images/med image.jpg' %}" alt="Entity Medical Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">الرئيسية</a></li>
+                <li><a href="{% url 'products:home' %}">المنتجات</a></li>
+                <li><a href="{% url 'offers:list' %}">العروض</a></li>
+                <li><a href="{% url 'about' %}">حول</a></li>
+                <li><a href="{% url 'contact:contact' %}">تواصل معنا</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'users:profile' %}">الملف الشخصي</a></li>
+                    <li><a href="{% url 'users:logout' %}">تسجيل الخروج</a></li>
+                {% else %}
+                    <li><a href="{% url 'users:login' %}">تسجيل الدخول</a></li>
+                    <li><a href="{% url 'users:register' %}">إنشاء حساب</a></li>
+                {% endif %}
+                <li class="cart-icon-container">
+                    <a href="#" class="cart-icon" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">{{ cart_count|default:0 }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- قسم المنتجات حسب الفئة -->
+    <section class="offers-section">
+        <div class="offers-container">
+            <a href="{% url 'products:home' %}" class="back-link">
+                <i class="fas fa-arrow-right"></i>
+                العودة إلى المنتجات
+            </a>
+            
+            <h1 class="section-title">{{ category.name }}</h1>
+            
+            {% if category.description %}
+            <p class="category-description">{{ category.description }}</p>
+            {% endif %}
+
+            {% if products %}
+            <div class="offers-grid">
+                {% for product in products %}
+                <div class="offer-card">
+                    {% if product.discount_percentage > 0 %}
+                    <span class="offer-badge">خصم {{ product.discount_percentage|floatformat:0 }}%</span>
+                    {% endif %}
+                    
+                    <div class="offer-image">
+                        {% with primary_img=product.images.all|first %}
+                            {% if primary_img %}
+                                <img src="{{ primary_img.image.url }}" alt="{{ product.name }}" style="width:100%; height:100%; object-fit:cover;">
+                            {% elif product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width:100%; height:100%; object-fit:cover;">
+                            {% elif product.brand.logo %}
+                                <img src="{{ product.brand.logo.url }}" alt="{{ product.brand.name }}" class="fallback-logo">
+                            {% else %}
+                                <i class="fas fa-box"></i>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    
+                    <div class="offer-content">
+                        <h3>{{ product.name }}</h3>
+                        <p>{{ product.description|truncatewords:20 }}</p>
+                        
+                        <div class="offer-price">
+                            <span class="current-price">{{ product.price }} جنيه</span>
+                            {% if product.old_price %}
+                            <span class="old-price">{{ product.old_price }} جنيه</span>
+                            {% endif %}
+                        </div>
+                        
+                        {% if product.features %}
+                        <div class="offer-features">
+                            {% for feature in product.features_list %}
+                            <span><i class="fas fa-check"></i> {{ feature }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        
+                        <div class="product-actions">
+                            <a href="{% url 'products:detail' product.slug %}" class="details-btn">
+                                <i class="fas fa-info-circle"></i>
+                                عرض التفاصيل
+                            </a>
+                            <button class="offer-btn" onclick="addToCart('{{ product.name }}', {{ product.price }}, {{ product.id }})">
+                                <i class="fas fa-cart-plus"></i>
+                                أضف للسلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="empty-state">
+                <i class="fas fa-box-open"></i>
+                <h3>لا توجد منتجات في هذه الفئة حالياً</h3>
+                <p>نعمل على إضافة منتجات جديدة قريباً</p>
+                <a href="{% url 'products:home' %}" class="details-btn" style="display: inline-flex; width: auto;">
+                    <i class="fas fa-arrow-right"></i>
+                    تصفح جميع المنتجات
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Entity Medical</h3>
+                    <p>نحن متخصصون في توريد الأجهزة الطبية والمناظير بأعلى جودة وأفضل الأسعار مع ضمان الجودة والخدمة المتميزة.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Zahraa Nasr city - 2151</p>
+                        <p><i class="fas fa-phone"></i> <span style="direction: ltr;">+20 101 392 8114</span></p>
+                        <p><i class="fas fa-envelope"></i> entityeg21@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Entity Medical. جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>سلة التسوق</h2>
+                <button class="close-cart" onclick="toggleCart()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-body">
+                <div class="cart-items" id="cartItems">
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>سلة التسوق فارغة</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total" id="cartTotal">المجموع: 0 جنيه</div>
+                <div class="cart-actions">
+                    <button class="btn-clear" onclick="clearCart()">مسح الكل</button>
+                    <button class="btn-checkout" onclick="checkout()">إتمام الطلب</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Notification -->
+    <div id="cartNotification" class="cart-notification">
+        <i class="fas fa-check-circle"></i>
+        <span>تم إضافة المنتج للسلة</span>
+    </div>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

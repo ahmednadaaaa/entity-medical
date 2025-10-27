@@ -1,0 +1,124 @@
+{% extends 'base.html' %}{% load static %}
+
+    سلة التسوق
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+    
+        {% for item in cart.items.all %}
+            
+                {{ item.product.name }}
+                الكمية: 
+                السعر: {{ item.subtotal }} جنيه
+                إزالة
+            
+        {% empty %}
+            السلة فارغة
+        {% endfor %}
+    
+    المجموع: {{ cart.total_price }} جنيه
+    إتمام الطلب
+
+
+
+.cart-page {
+    padding: 20px;
+    direction: rtl;
+}
+.cart-items {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+}
+.cart-item {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+.quantity-input {
+    width: 50px;
+}
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+}
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.quantity-input').forEach(input => {
+        input.addEventListener('change', function() {
+            const itemId = this.getAttribute('data-item-id');
+            const quantity = this.value;
+            fetch('{% url "orders:update_quantity" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({ item_id: itemId, quantity: quantity })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Update subtotal and total
+                    location.reload(); // Simple reload for update
+                }
+            });
+        });
+    });
+
+    document.querySelectorAll('.remove-item').forEach(button => {
+        button.addEventListener('click', function() {
+            const itemId = this.getAttribute('data-item-id');
+            fetch('{% url "orders:remove_from_cart" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({ item_id: itemId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                }
+            });
+        });
+    });
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+});
+

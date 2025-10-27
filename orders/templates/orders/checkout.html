@@ -1,0 +1,78 @@
+{% extends 'base.html' %}{% load static %}
+
+    إتمام الطلب
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+    
+        السلة
+        {% for item in cart.items.all %}
+            {{ item.product.name }} x {{ item.quantity }} - {{ item.subtotal }} جنيه
+        {% endfor %}
+        المجموع: {{ cart.total_price }} جنيه
+    
+    
+        {% csrf_token %}
+        
+            الاسم الكامل
+            
+        
+        
+            رقم الهاتف
+            
+        
+        
+            البريد الإلكتروني
+            
+        
+        
+            العنوان
+            
+        
+        
+            ملاحظات
+            
+        
+        إكمال الطلب
+    
+
+
+
+.checkout-page {
+    padding: 20px;
+    direction: rtl;
+}
+.cart-summary {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+{% endblock %}

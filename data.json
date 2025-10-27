@@ -1,0 +1,1645 @@
+[
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "products",
+        "model": "brand"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "products",
+        "model": "category"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "products",
+        "model": "product"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "products",
+        "model": "productfeature"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "products",
+        "model": "productimage"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "products",
+        "model": "subcategory"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "products",
+        "model": "review"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "orders",
+        "model": "cart"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "orders",
+        "model": "cartitem"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "orders",
+        "model": "order"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "orders",
+        "model": "orderitem"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "users",
+        "model": "customuser"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "offers",
+        "model": "offer"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "offers",
+        "model": "offerproduct"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "contact",
+        "model": "contact"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "contact",
+        "model": "newsletter"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "contact",
+        "model": "notification"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "6mumtu92ldrixl6vsd5798mu2mbahcn9",
+    "fields": {
+        "session_data": "e30:1vCdib:vLcVOJiKeArm7e7G281zp3iZRwEIjyUzZ3hmLO9tdpU",
+        "expire_date": "2025-11-08T12:50:01.973Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "qddd6vewm2fuqmd7dikcs2oeyvfp1vcs",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQAP-FsyGAvPTovd_Q7MKuVA0kpT0Z_92Q9KDXmcm8xQz7Vua90zovWVyFFqdfhpCeVIfID6j3JlOr27qgHIk8bJdTy_S6He3foEAvY2vIoPHWW41kGdiyjhfvgnekWNE5aUoJmGP0ISP7gOiyUzGzhRSi-HwB6-U4oQ:1vDCSw:X3lliFVpGoFzY6UG3Cne1TmymsDzj0GxD9WrskxrfYk",
+        "expire_date": "2025-11-10T01:56:10.115Z"
+    }
+},
+{
+    "model": "products.category",
+    "pk": 1,
+    "fields": {
+        "name": "أجهزة طبية",
+        "slug": "أجهزة-طبية",
+        "description": "",
+        "icon": "fas fa-medkit",
+        "order": 0,
+        "is_active": true,
+        "created_at": "2025-10-24T16:27:47.003Z"
+    }
+},
+{
+    "model": "products.category",
+    "pk": 2,
+    "fields": {
+        "name": "medical-devices",
+        "slug": "medical-devices",
+        "description": "تشمل جميع الأجهزة المستخدمة في العيادات والمستشفيات لمتابعة وتشخيص الحالات الطبية بدقة",
+        "icon": "fas fa-medkit🏥",
+        "order": 1,
+        "is_active": true,
+        "created_at": "2025-10-25T04:06:21.969Z"
+    }
+},
+{
+    "model": "products.category",
+    "pk": 3,
+    "fields": {
+        "name": "medical-supplies",
+        "slug": "medical-supplies",
+        "description": "قسم يحتوي على الأدوات والمستهلكات الطبية مثل الشاش، السرنجات، والكمامات.",
+        "icon": "fas fa-medkit💉",
+        "order": 2,
+        "is_active": true,
+        "created_at": "2025-10-25T04:06:54.821Z"
+    }
+},
+{
+    "model": "products.category",
+    "pk": 4,
+    "fields": {
+        "name": "personal-care",
+        "slug": "personal-care",
+        "description": "منتجات العناية بالبشرة والشعر والنظافة الشخصية للمستشفيات والمنازل.",
+        "icon": "fas fa-medkit",
+        "order": 3,
+        "is_active": true,
+        "created_at": "2025-10-25T04:07:13.518Z"
+    }
+},
+{
+    "model": "products.subcategory",
+    "pk": 1,
+    "fields": {
+        "category": 1,
+        "name": "أجهزة قياس الضغط",
+        "slug": "أجهزة-قياس-الضغط",
+        "description": "",
+        "is_active": true
+    }
+},
+{
+    "model": "products.brand",
+    "pk": 1,
+    "fields": {
+        "name": "Omron",
+        "logo": "",
+        "description": ""
+    }
+},
+{
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+        "category": 1,
+        "subcategory": 1,
+        "brand": 1,
+        "name": "جهاز قياس ضغط الدم الرقمي Omron M3",
+        "slug": "جهاز-قياس-ضغط-الدم-الرقمي-omron-m3",
+        "description": "جهاز قياس ضغط الدم الرقمي من أومرون يتميز بدقة عالية وسهولة في الاستخدام، مزود بشاشة LCD كبيرة لعرض النتائج بوضوح.",
+        "specifications": "قياس أوتوماتيكي للضغط الانقباضي والانبساطي\r\n\t•\tعرض معدل ضربات القلب\r\n\t•\tذاكرة لـ 60 قراءة\r\n\t•\tيعمل بالبطاريات",
+        "price": "1350.00",
+        "discount_percentage": 10,
+        "stock": 25,
+        "icon": "fas fa-box",
+        "is_featured": true,
+        "is_active": true,
+        "views": 34,
+        "created_at": "2025-10-24T16:29:56.516Z",
+        "updated_at": "2025-10-24T16:29:56.517Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+        "category": 3,
+        "subcategory": 1,
+        "brand": 1,
+        "name": "AM052C-1 Manual Hydraulic Operating Table",
+        "slug": "am052c-1-manual-hydraulic-operating-table",
+        "description": "We provide a standard 1 year warranty, optional to be increased. 1% free parts of the total quantity will be provided together with goods.\r\n* The product that is damaged or fails due to the manufacturing problem within one year after the purchasing date will gain free spare parts and assembling drawings from the company.\r\n* Beyond the maintenance period, we will charge the accessories, but the technical service is still free.",
+        "specifications": "Length\t2000±50\r\nWidth\t480±10\r\nHeight Of Table Top\t800±50\r\nHeight Adjustment Range\t250mm\r\nBack Plate\t -18°～80°\r\nLeg Plate\t90°\r\nLeg board Outwards\t90°\r\nTrendelenburg/Rev-Trend\t20°/30°\r\nLateral Tilt\t18°/18°\r\nHead Plate\t-90°～45°\r\nPatient Weight Capacity\t185kg",
+        "price": "439990.00",
+        "discount_percentage": 15,
+        "stock": 30,
+        "icon": "fas fa-box",
+        "is_featured": true,
+        "is_active": true,
+        "views": 19,
+        "created_at": "2025-10-25T11:23:43.663Z",
+        "updated_at": "2025-10-25T11:23:43.663Z"
+    }
+},
+{
+    "model": "products.productimage",
+    "pk": 1,
+    "fields": {
+        "product": 1,
+        "image": "products/36e28236ca53ac9d4912b9908ff57ad0.jpg",
+        "is_primary": true,
+        "order": 1
+    }
+},
+{
+    "model": "products.productimage",
+    "pk": 2,
+    "fields": {
+        "product": 1,
+        "image": "products/d3819ec065eb1c7443225e83306a99ae.jpg",
+        "is_primary": false,
+        "order": 2
+    }
+},
+{
+    "model": "products.productimage",
+    "pk": 3,
+    "fields": {
+        "product": 2,
+        "image": "products/b8b0e2f67f21f7000dd1a213a5a15b50.jpg",
+        "is_primary": true,
+        "order": 1
+    }
+},
+{
+    "model": "products.productimage",
+    "pk": 4,
+    "fields": {
+        "product": 2,
+        "image": "products/5d8ced97bfe1d07de864a2ba637e9ca3.jpg",
+        "is_primary": false,
+        "order": 0
+    }
+},
+{
+    "model": "products.productfeature",
+    "pk": 1,
+    "fields": {
+        "product": 2,
+        "feature": "Length",
+        "order": 1
+    }
+},
+{
+    "model": "products.productfeature",
+    "pk": 2,
+    "fields": {
+        "product": 2,
+        "feature": "Back Plate\t -18°～80°",
+        "order": 2
+    }
+},
+{
+    "model": "orders.cartitem",
+    "pk": 1,
+    "fields": {
+        "cart": 2,
+        "product": 2,
+        "quantity": 1,
+        "created_at": "2025-10-26T00:06:36.614Z"
+    }
+},
+{
+    "model": "offers.offer",
+    "pk": 1,
+    "fields": {
+        "title": "خصم 20% على أجهزة قياس الضغط",
+        "description": "احصل على أفضل أجهزة قياس الضغط من أومرون مع خصم خاص لفترة محدودة.",
+        "offer_type": "percentage",
+        "discount_value": "20.00",
+        "start_date": "2025-10-25T11:25:12Z",
+        "end_date": "2025-10-30T11:25:19Z",
+        "is_active": true,
+        "is_featured": true,
+        "badge_text": "خصم",
+        "badge_color": "#FFD700",
+        "created_at": "2025-10-25T11:25:32.242Z"
+    }
+},
+{
+    "model": "offers.offerproduct",
+    "pk": 1,
+    "fields": {
+        "offer": 1,
+        "product": 2
+    }
+},
+{
+    "model": "offers.offerproduct",
+    "pk": 2,
+    "fields": {
+        "offer": 1,
+        "product": 1
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add شركة مصنعة",
+        "content_type": [
+            "products",
+            "brand"
+        ],
+        "codename": "add_brand"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change شركة مصنعة",
+        "content_type": [
+            "products",
+            "brand"
+        ],
+        "codename": "change_brand"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete شركة مصنعة",
+        "content_type": [
+            "products",
+            "brand"
+        ],
+        "codename": "delete_brand"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view شركة مصنعة",
+        "content_type": [
+            "products",
+            "brand"
+        ],
+        "codename": "view_brand"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add فئة",
+        "content_type": [
+            "products",
+            "category"
+        ],
+        "codename": "add_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change فئة",
+        "content_type": [
+            "products",
+            "category"
+        ],
+        "codename": "change_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete فئة",
+        "content_type": [
+            "products",
+            "category"
+        ],
+        "codename": "delete_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view فئة",
+        "content_type": [
+            "products",
+            "category"
+        ],
+        "codename": "view_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add منتج",
+        "content_type": [
+            "products",
+            "product"
+        ],
+        "codename": "add_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change منتج",
+        "content_type": [
+            "products",
+            "product"
+        ],
+        "codename": "change_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete منتج",
+        "content_type": [
+            "products",
+            "product"
+        ],
+        "codename": "delete_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view منتج",
+        "content_type": [
+            "products",
+            "product"
+        ],
+        "codename": "view_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add ميزة منتج",
+        "content_type": [
+            "products",
+            "productfeature"
+        ],
+        "codename": "add_productfeature"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change ميزة منتج",
+        "content_type": [
+            "products",
+            "productfeature"
+        ],
+        "codename": "change_productfeature"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete ميزة منتج",
+        "content_type": [
+            "products",
+            "productfeature"
+        ],
+        "codename": "delete_productfeature"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view ميزة منتج",
+        "content_type": [
+            "products",
+            "productfeature"
+        ],
+        "codename": "view_productfeature"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add صورة منتج",
+        "content_type": [
+            "products",
+            "productimage"
+        ],
+        "codename": "add_productimage"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change صورة منتج",
+        "content_type": [
+            "products",
+            "productimage"
+        ],
+        "codename": "change_productimage"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete صورة منتج",
+        "content_type": [
+            "products",
+            "productimage"
+        ],
+        "codename": "delete_productimage"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view صورة منتج",
+        "content_type": [
+            "products",
+            "productimage"
+        ],
+        "codename": "view_productimage"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add فئة فرعية",
+        "content_type": [
+            "products",
+            "subcategory"
+        ],
+        "codename": "add_subcategory"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change فئة فرعية",
+        "content_type": [
+            "products",
+            "subcategory"
+        ],
+        "codename": "change_subcategory"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete فئة فرعية",
+        "content_type": [
+            "products",
+            "subcategory"
+        ],
+        "codename": "delete_subcategory"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view فئة فرعية",
+        "content_type": [
+            "products",
+            "subcategory"
+        ],
+        "codename": "view_subcategory"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add تقييم",
+        "content_type": [
+            "products",
+            "review"
+        ],
+        "codename": "add_review"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change تقييم",
+        "content_type": [
+            "products",
+            "review"
+        ],
+        "codename": "change_review"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete تقييم",
+        "content_type": [
+            "products",
+            "review"
+        ],
+        "codename": "delete_review"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view تقييم",
+        "content_type": [
+            "products",
+            "review"
+        ],
+        "codename": "view_review"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add سلة تسوق",
+        "content_type": [
+            "orders",
+            "cart"
+        ],
+        "codename": "add_cart"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change سلة تسوق",
+        "content_type": [
+            "orders",
+            "cart"
+        ],
+        "codename": "change_cart"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete سلة تسوق",
+        "content_type": [
+            "orders",
+            "cart"
+        ],
+        "codename": "delete_cart"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view سلة تسوق",
+        "content_type": [
+            "orders",
+            "cart"
+        ],
+        "codename": "view_cart"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add عنصر في السلة",
+        "content_type": [
+            "orders",
+            "cartitem"
+        ],
+        "codename": "add_cartitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change عنصر في السلة",
+        "content_type": [
+            "orders",
+            "cartitem"
+        ],
+        "codename": "change_cartitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete عنصر في السلة",
+        "content_type": [
+            "orders",
+            "cartitem"
+        ],
+        "codename": "delete_cartitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view عنصر في السلة",
+        "content_type": [
+            "orders",
+            "cartitem"
+        ],
+        "codename": "view_cartitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add طلب",
+        "content_type": [
+            "orders",
+            "order"
+        ],
+        "codename": "add_order"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change طلب",
+        "content_type": [
+            "orders",
+            "order"
+        ],
+        "codename": "change_order"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete طلب",
+        "content_type": [
+            "orders",
+            "order"
+        ],
+        "codename": "delete_order"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view طلب",
+        "content_type": [
+            "orders",
+            "order"
+        ],
+        "codename": "view_order"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add عنصر في الطلب",
+        "content_type": [
+            "orders",
+            "orderitem"
+        ],
+        "codename": "add_orderitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change عنصر في الطلب",
+        "content_type": [
+            "orders",
+            "orderitem"
+        ],
+        "codename": "change_orderitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete عنصر في الطلب",
+        "content_type": [
+            "orders",
+            "orderitem"
+        ],
+        "codename": "delete_orderitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view عنصر في الطلب",
+        "content_type": [
+            "orders",
+            "orderitem"
+        ],
+        "codename": "view_orderitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add مستخدم",
+        "content_type": [
+            "users",
+            "customuser"
+        ],
+        "codename": "add_customuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change مستخدم",
+        "content_type": [
+            "users",
+            "customuser"
+        ],
+        "codename": "change_customuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete مستخدم",
+        "content_type": [
+            "users",
+            "customuser"
+        ],
+        "codename": "delete_customuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view مستخدم",
+        "content_type": [
+            "users",
+            "customuser"
+        ],
+        "codename": "view_customuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add عرض",
+        "content_type": [
+            "offers",
+            "offer"
+        ],
+        "codename": "add_offer"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change عرض",
+        "content_type": [
+            "offers",
+            "offer"
+        ],
+        "codename": "change_offer"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete عرض",
+        "content_type": [
+            "offers",
+            "offer"
+        ],
+        "codename": "delete_offer"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view عرض",
+        "content_type": [
+            "offers",
+            "offer"
+        ],
+        "codename": "view_offer"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add منتج في العرض",
+        "content_type": [
+            "offers",
+            "offerproduct"
+        ],
+        "codename": "add_offerproduct"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change منتج في العرض",
+        "content_type": [
+            "offers",
+            "offerproduct"
+        ],
+        "codename": "change_offerproduct"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete منتج في العرض",
+        "content_type": [
+            "offers",
+            "offerproduct"
+        ],
+        "codename": "delete_offerproduct"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view منتج في العرض",
+        "content_type": [
+            "offers",
+            "offerproduct"
+        ],
+        "codename": "view_offerproduct"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add رسالة تواصل",
+        "content_type": [
+            "contact",
+            "contact"
+        ],
+        "codename": "add_contact"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change رسالة تواصل",
+        "content_type": [
+            "contact",
+            "contact"
+        ],
+        "codename": "change_contact"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete رسالة تواصل",
+        "content_type": [
+            "contact",
+            "contact"
+        ],
+        "codename": "delete_contact"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view رسالة تواصل",
+        "content_type": [
+            "contact",
+            "contact"
+        ],
+        "codename": "view_contact"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add مشترك في النشرة البريدية",
+        "content_type": [
+            "contact",
+            "newsletter"
+        ],
+        "codename": "add_newsletter"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change مشترك في النشرة البريدية",
+        "content_type": [
+            "contact",
+            "newsletter"
+        ],
+        "codename": "change_newsletter"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete مشترك في النشرة البريدية",
+        "content_type": [
+            "contact",
+            "newsletter"
+        ],
+        "codename": "delete_newsletter"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view مشترك في النشرة البريدية",
+        "content_type": [
+            "contact",
+            "newsletter"
+        ],
+        "codename": "view_newsletter"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add إشعار",
+        "content_type": [
+            "contact",
+            "notification"
+        ],
+        "codename": "add_notification"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change إشعار",
+        "content_type": [
+            "contact",
+            "notification"
+        ],
+        "codename": "change_notification"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete إشعار",
+        "content_type": [
+            "contact",
+            "notification"
+        ],
+        "codename": "delete_notification"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view إشعار",
+        "content_type": [
+            "contact",
+            "notification"
+        ],
+        "codename": "view_notification"
+    }
+},
+{
+    "model": "users.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$FB90fQAdlH2TvEl0QUpToh$UX1thLZ4kMMpRYXMpJcmdlbJ1eNi481fn1R5wKZMTEQ=",
+        "last_login": "2025-10-26T00:44:43.009Z",
+        "is_superuser": true,
+        "full_name": "ahmed",
+        "phone": "01010942959",
+        "email": null,
+        "is_active": true,
+        "is_staff": true,
+        "date_joined": "2025-10-24T11:15:59.936Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$rrT5ZCfhnp2ZEXpJ4VZbuV$QOfPamreUpPRrD80V/VDFi3lbwG3xkwUwzv8jP14kO4=",
+        "last_login": "2025-10-25T22:04:02.571Z",
+        "is_superuser": false,
+        "full_name": "ahmednada",
+        "phone": "01009494200",
+        "email": "ahmenadaaa@gmail.com",
+        "is_active": true,
+        "is_staff": false,
+        "date_joined": "2025-10-25T22:04:02.462Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$7wIHjr2b2eCvENFUVmF8cn$n4crXtXoHf0yP+bHF0+N8d9sNaOeTLjhlSvHn0ebI68=",
+        "last_login": "2025-10-26T00:25:19.964Z",
+        "is_superuser": false,
+        "full_name": "omar",
+        "phone": "01008350600",
+        "email": "ahmenadaaa@gmail.com",
+        "is_active": true,
+        "is_staff": false,
+        "date_joined": "2025-10-26T00:25:19.866Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "orders.cart",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "01010942959"
+        ],
+        "session_key": null,
+        "created_at": "2025-10-25T12:12:05.970Z",
+        "updated_at": "2025-10-25T12:12:05.970Z"
+    }
+},
+{
+    "model": "orders.cart",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "01009494200"
+        ],
+        "session_key": null,
+        "created_at": "2025-10-25T22:04:34.129Z",
+        "updated_at": "2025-10-26T00:10:41.907Z"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2025-10-24T16:27:47.005Z",
+        "user": [
+            "01010942959"
+        ],
+        "content_type": [
+            "products",
+            "category"
+        ],
+        "object_id": "1",
+        "object_repr": "أجهزة طبية",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2025-10-24T16:28:05.333Z",
+        "user": [
+            "01010942959"
+        ],
+        "content_type": [
+            "products",
+            "subcategory"
+        ],
+        "object_id": "1",
+        "object_repr": "أجهزة طبية - أجهزة قياس الضغط",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2025-10-24T16:28:19.428Z",
+        "user": [
+            "01010942959"
+        ],
+        "content_type": [
+            "products",
+            "brand"
+        ],
+        "object_id": "1",
+        "object_repr": "Omron",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2025-10-24T16:29:56.523Z",
+        "user": [
+            "01010942959"
+        ],
+        "content_type": [
+            "products",
+            "product"
+        ],
+        "object_id": "1",
+        "object_repr": "جهاز قياس ضغط الدم الرقمي Omron M3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0635\\u0648\\u0631\\u0629 \\u0645\\u0646\\u062a\\u062c\", \"object\": \"\\u062c\\u0647\\u0627\\u0632 \\u0642\\u064a\\u0627\\u0633 \\u0636\\u063a\\u0637 \\u0627\\u0644\\u062f\\u0645 \\u0627\\u0644\\u0631\\u0642\\u0645\\u064a Omron M3 - \\u0635\\u0648\\u0631\\u0629 1\"}}, {\"added\": {\"name\": \"\\u0635\\u0648\\u0631\\u0629 \\u0645\\u0646\\u062a\\u062c\", \"object\": \"\\u062c\\u0647\\u0627\\u0632 \\u0642\\u064a\\u0627\\u0633 \\u0636\\u063a\\u0637 \\u0627\\u0644\\u062f\\u0645 \\u0627\\u0644\\u0631\\u0642\\u0645\\u064a Omron M3 - \\u0635\\u0648\\u0631\\u0629 2\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2025-10-24T19:01:57.888Z",
+        "user": [
+            "01010942959"
+        ],
+        "content_type": [
+            "products",
+            "category"
+        ],
+        "object_id": "1",
+        "object_repr": "أجهزة طبية",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2025-10-25T04:06:21.970Z",
+        "user": [
+            "01010942959"
+        ],
+        "content_type": [
+            "products",
+            "category"
+        ],
+        "object_id": "2",
+        "object_repr": "medical-devices",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2025-10-25T04:06:54.822Z",
+        "user": [
+            "01010942959"
+        ],
+        "content_type": [
+            "products",
+            "category"
+        ],
+        "object_id": "3",
+        "object_repr": "medical-supplies",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2025-10-25T04:07:13.521Z",
+        "user": [
+            "01010942959"
+        ],
+        "content_type": [
+            "products",
+            "category"
+        ],
+        "object_id": "4",
+        "object_repr": "personal-care",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2025-10-25T11:23:43.670Z",
+        "user": [
+            "01010942959"
+        ],
+        "content_type": [
+            "products",
+            "product"
+        ],
+        "object_id": "2",
+        "object_repr": "AM052C-1 Manual Hydraulic Operating Table",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0635\\u0648\\u0631\\u0629 \\u0645\\u0646\\u062a\\u062c\", \"object\": \"AM052C-1 Manual Hydraulic Operating Table - \\u0635\\u0648\\u0631\\u0629 1\"}}, {\"added\": {\"name\": \"\\u0635\\u0648\\u0631\\u0629 \\u0645\\u0646\\u062a\\u062c\", \"object\": \"AM052C-1 Manual Hydraulic Operating Table - \\u0635\\u0648\\u0631\\u0629 0\"}}, {\"added\": {\"name\": \"\\u0645\\u064a\\u0632\\u0629 \\u0645\\u0646\\u062a\\u062c\", \"object\": \"AM052C-1 Manual Hydraulic Operating Table - Length\"}}, {\"added\": {\"name\": \"\\u0645\\u064a\\u0632\\u0629 \\u0645\\u0646\\u062a\\u062c\", \"object\": \"AM052C-1 Manual Hydraulic Operating Table - Back Plate\\t -18\\u00b0\\uff5e80\\u00b0\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2025-10-25T11:25:32.245Z",
+        "user": [
+            "01010942959"
+        ],
+        "content_type": [
+            "offers",
+            "offer"
+        ],
+        "object_id": "1",
+        "object_repr": "خصم 20% على أجهزة قياس الضغط",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0645\\u0646\\u062a\\u062c \\u0641\\u064a \\u0627\\u0644\\u0639\\u0631\\u0636\", \"object\": \"\\u062e\\u0635\\u0645 20% \\u0639\\u0644\\u0649 \\u0623\\u062c\\u0647\\u0632\\u0629 \\u0642\\u064a\\u0627\\u0633 \\u0627\\u0644\\u0636\\u063a\\u0637 - AM052C-1 Manual Hydraulic Operating Table\"}}, {\"added\": {\"name\": \"\\u0645\\u0646\\u062a\\u062c \\u0641\\u064a \\u0627\\u0644\\u0639\\u0631\\u0636\", \"object\": \"\\u062e\\u0635\\u0645 20% \\u0639\\u0644\\u0649 \\u0623\\u062c\\u0647\\u0632\\u0629 \\u0642\\u064a\\u0627\\u0633 \\u0627\\u0644\\u0636\\u063a\\u0637 - \\u062c\\u0647\\u0627\\u0632 \\u0642\\u064a\\u0627\\u0633 \\u0636\\u063a\\u0637 \\u0627\\u0644\\u062f\\u0645 \\u0627\\u0644\\u0631\\u0642\\u0645\\u064a Omron M3\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2025-10-26T00:06:36.616Z",
+        "user": [
+            "01010942959"
+        ],
+        "content_type": [
+            "orders",
+            "cart"
+        ],
+        "object_id": "2",
+        "object_repr": "سلة ahmednada",
+        "action_flag": 2,
+        "change_message": "[{\"added\": {\"name\": \"\\u0639\\u0646\\u0635\\u0631 \\u0641\\u064a \\u0627\\u0644\\u0633\\u0644\\u0629\", \"object\": \"AM052C-1 Manual Hydraulic Operating Table x 1\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2025-10-26T00:10:41.908Z",
+        "user": [
+            "01010942959"
+        ],
+        "content_type": [
+            "orders",
+            "cart"
+        ],
+        "object_id": "2",
+        "object_repr": "سلة ahmednada",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+}
+]

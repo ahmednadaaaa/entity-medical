@@ -1,0 +1,51 @@
+{% extends 'base.html' %}{% load static %}
+
+    طلباتي
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+    
+        {% for order in orders %}
+            
+                طلب #{{ order.order_number }}
+                الحالة: {{ order.get_status_display }}
+                التاريخ: {{ order.created_at|date:"d/m/Y" }}
+                المبلغ: {{ order.total_amount }} جنيه
+                عرض التفاصيل
+            
+        {% empty %}
+            لا توجد طلبات
+        {% endfor %}
+    
+
+
+
+.order-list-page {
+    padding: 20px;
+    direction: rtl;
+}
+.orders {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+.order-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+{% endblock %}

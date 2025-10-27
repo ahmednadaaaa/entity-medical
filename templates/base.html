@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Entity Medical{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- القائمة العلوية -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="{% static 'images/med image.jpg' %}" alt="Entity Medical Logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/" {% if request.path == '/' %}class="active"{% endif %}>الرئيسية</a></li>
+                <li><a href="{% url 'products:home' %}" {% if 'products' in request.path %}class="active"{% endif %}>المنتجات</a></li>
+                <li><a href="{% url 'offers:list' %}" {% if 'offers' in request.path %}class="active"{% endif %}>العروض</a></li>
+                <li><a href="{% url 'about' %}" {% if request.path == '/about/' %}class="active"{% endif %}>حول</a></li>
+                <li><a href="{% url 'contact:contact' %}" {% if 'contact' in request.path %}class="active"{% endif %}>تواصل معنا</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'users:profile' %}" {% if 'profile' in request.path %}class="active"{% endif %}>الملف الشخصي</a></li>
+                    <li><a href="{% url 'users:logout' %}">تسجيل الخروج</a></li>
+                {% else %}
+                    <li><a href="{% url 'users:login' %}">تسجيل الدخول</a></li>
+                    <li><a href="{% url 'users:register' %}">إنشاء حساب</a></li>
+                {% endif %}
+                <li class="cart-icon-container">
+                    <a href="#" class="cart-icon" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                </li>
+            </ul>
+            
+           
+        </div>
+    </nav>
+
+    <!-- المحتوى الرئيسي -->
+    {% block content %}{% endblock %}
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Zahraa Nasr City - 2151</p>
+                        <p><i class="fas fa-phone"></i> <span style="direction: ltr; unicode-bidi: bidi-override;">+20 101 392 8114</span></p>
+                        <p><i class="fas fa-envelope"></i> entityeg21@gmail.com</p>
+                    </div>
+                </div>
+                
+                <!-- Social Media -->
+                <div class="footer-section">
+                    <h3>تابعنا</h3>
+                    <p>ابق على اطلاع بأحدث منتجاتنا وعروضنا</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/201013928114" target="_blank" class="social-link whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/+201013928114" target="_blank" class="social-link telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100064583177086" target="_blank" class="social-link facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/moelshekh" target="_blank" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Entity Medical. جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>عربة المشتريات</h2>
+                <button class="close-cart" onclick="toggleCart()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-body">
+                <div id="cartItems" class="cart-items">
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>عربة المشتريات فارغة</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>المجموع: <span id="cartTotal">0 جنيه</span></span>
+                </div>
+                <div class="cart-actions">
+                    <button class="btn-clear" onclick="clearCart()">مسح العربة</button>
+                    <button class="btn-checkout" onclick="checkout()">إتمام الطلب</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Notification -->
+    <div id="cartNotification" class="cart-notification">
+        <i class="fas fa-check-circle"></i>
+        <span>تم إضافة المنتج للسلة</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

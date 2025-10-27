@@ -1,0 +1,493 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اتصل بنا - Entity Medical</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .contact-section {
+            margin-top: 80px;
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(27, 155, 216, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+        }
+
+        .contact-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 4rem;
+            font-size: 4rem;
+            font-weight: 800;
+            text-shadow: 3px 3px 6px rgba(27, 155, 216, 0.2);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #FFD700 100%);
+            border-radius: 2px;
+        }
+
+        .messages {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border: 2px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            border: 2px solid #ffeaa7;
+            color: #856404;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            border: 2px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .alert i {
+            font-size: 1.5rem;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(27, 155, 216, 0.15);
+            border: 2px solid rgba(27, 155, 216, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(27, 155, 216, 0.2);
+        }
+
+        .contact-info h3 {
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            border-radius: 2px;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info p:hover {
+            color: #1b9bd8;
+            transform: translateX(-5px);
+        }
+
+        .contact-info i {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        .contact-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #1B2848;
+        }
+
+        .contact-info h4 {
+            color: var(--secondary-color);
+            margin: 2rem 0 1rem 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(27, 155, 216, 0.15);
+            border: 2px solid rgba(27, 155, 216, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(27, 155, 216, 0.2);
+        }
+
+        .contact-form h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .contact-form > p {
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .form-group:focus-within label {
+            color: var(--secondary-color);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 5px rgba(27, 155, 216, 0.05);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 5px 15px rgba(27, 155, 216, 0.2);
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(27, 155, 216, 0.3);
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(27, 40, 72, 0.4);
+            background: #1B2848;
+        }
+
+        .submit-button:active {
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .section-title {
+                font-size: 3rem;
+            }
+            
+            .contact-info,
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- القائمة العلوية -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'images/med image.jpg' %}" alt="Entity Medical Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">الرئيسية</a></li>
+                <li><a href="{% url 'products:home' %}">المنتجات</a></li>
+                <li><a href="{% url 'offers:list' %}">العروض</a></li>
+                <li><a href="{% url 'about' %}">حول</a></li>
+                <li><a href="{% url 'contact:contact' %}" class="active">تواصل معنا</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'users:profile' %}">الملف الشخصي</a></li>
+                    <li><a href="{% url 'users:logout' %}">تسجيل الخروج</a></li>
+                {% else %}
+                    <li><a href="{% url 'users:login' %}">تسجيل الدخول</a></li>
+                    <li><a href="{% url 'users:register' %}">إنشاء حساب</a></li>
+                {% endif %}
+                <li class="cart-icon-container">
+                    <a href="#" class="cart-icon" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">{{ cart_count }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- قسم التواصل -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">اتصل بنا</h2>
+
+            <!-- رسائل النجاح أو الخطأ -->
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {% if message.tags == 'success' %}
+                        <i class="fas fa-check-circle"></i>
+                    {% elif message.tags == 'warning' %}
+                        <i class="fas fa-exclamation-triangle"></i>
+                    {% elif message.tags == 'error' %}
+                        <i class="fas fa-times-circle"></i>
+                    {% endif %}
+                    <span>{{ message }}</span>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3><i class="fas fa-address-book"></i> معلومات التواصل</h3>
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <a href="https://maps.app.goo.gl/SZxxqLLhJayjga4L6" target="_blank" rel="noopener noreferrer">
+                            Zahraa Nasr City - 2151
+                        </a>
+                    </p>
+                    <p>
+                        <i class="fas fa-phone"></i>
+                        الهاتف: <a href="tel:+201013928114" style="direction: ltr; unicode-bidi: bidi-override;">+20 101 392 8114</a>
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        البريد الإلكتروني: <a href="mailto:entityeg21@gmail.com">entityeg21@gmail.com</a>
+                    </p>
+                    <p>
+                        <i class="fas fa-clock"></i>
+                        ساعات العمل: من السبت إلى الخميس (9:00 ص - 6:00 م)
+                    </p>
+                    <p>
+                        <i class="fas fa-headset"></i>
+                        الدعم الفني: متاح 24/7
+                    </p>
+                    
+                    <h4>
+                        <i class="fas fa-share-alt"></i> روابط التواصل الاجتماعي
+                    </h4>
+                    <div class="social-links">
+                        <a href="https://wa.me/201013928114" target="_blank" rel="noopener noreferrer" class="social-link whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://t.me/+201013928114" target="_blank" rel="noopener noreferrer" class="social-link telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=100064583177086" target="_blank" rel="noopener noreferrer" class="social-link facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/moelshekh" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3><i class="fas fa-paper-plane"></i> أرسل لنا رسالة</h3>
+                    <p>نحن هنا لمساعدتك! أرسل لنا رسالتك وسنتواصل معك في أقرب وقت ممكن.</p>
+                    
+                    <form method="POST" id="contactForm">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label for="name"><i class="fas fa-user"></i> الاسم الكامل</label>
+                            <input type="text" id="name" name="name" required placeholder="اكتب اسمك الكامل">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                            <input type="email" id="email" name="email" required placeholder="example@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone"><i class="fas fa-phone"></i> رقم الهاتف</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="01XXXXXXXXX" pattern="^0[0-9]{10}$" title="أدخل رقم هاتف مصري صحيح يبدأ بـ 0 ويتكون من 11 رقمًا">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject"><i class="fas fa-tag"></i> موضوع الرسالة</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">اختر موضوع الرسالة</option>
+                                <option value="product_inquiry">استفسار عن منتج</option>
+                                <option value="price_quote">طلب عرض سعر</option>
+                                <option value="technical_support">دعم فني</option>
+                                <option value="complaint">شكوى أو اقتراح</option>
+                                <option value="other">أخرى</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message"><i class="fas fa-comment"></i> الرسالة</label>
+                            <textarea id="message" name="message" required placeholder="اكتب رسالتك هنا..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-button">
+                            <i class="fas fa-paper-plane"></i>
+                            إرسال الرسالة
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Zahraa Nasr City - 2151</p>
+                        <p><i class="fas fa-phone"></i> <span style="direction: ltr;">+20 101 392 8114</span></p>
+                        <p><i class="fas fa-envelope"></i> entityeg21@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>تابعنا</h3>
+                    <p>ابق على اطلاع بأحدث منتجاتنا وعروضنا</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/201013928114" target="_blank" class="social-link whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/+201013928114" target="_blank" class="social-link telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100064583177086" target="_blank" class="social-link facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/moelshekh" target="_blank" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Entity Medical. جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
