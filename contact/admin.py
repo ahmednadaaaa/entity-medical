@@ -3,7 +3,6 @@ from .models import Contact, Newsletter, Notification
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    """لوحة تحكم رسائل التواصل"""
     
     list_display = ['name', 'email', 'phone', 'subject', 'status', 'created_at']
     list_filter = ['subject', 'status', 'created_at']
@@ -27,7 +26,6 @@ class ContactAdmin(admin.ModelAdmin):
     
     def get_queryset(self, request):
         qs = super().get_queryset(request)
-        # ترتيب الرسائل: الجديدة أولاً
         return qs.order_by('-created_at')
     
     actions = ['mark_as_in_progress', 'mark_as_resolved', 'mark_as_closed']
@@ -50,7 +48,6 @@ class ContactAdmin(admin.ModelAdmin):
 
 @admin.register(Newsletter)
 class NewsletterAdmin(admin.ModelAdmin):
-    """لوحة تحكم المشتركين في النشرة البريدية"""
     
     list_display = ['email', 'subscribed_at', 'is_active']
     list_filter = ['is_active', 'subscribed_at']
@@ -75,7 +72,6 @@ class NewsletterAdmin(admin.ModelAdmin):
 
 @admin.register(Notification)
 class NotificationAdmin(admin.ModelAdmin):
-    """لوحة تحكم الإشعارات"""
     
     list_display = ['title', 'notification_type', 'is_read', 'created_at']
     list_filter = ['notification_type', 'is_read', 'created_at']

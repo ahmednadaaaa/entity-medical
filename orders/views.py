@@ -9,7 +9,6 @@ import json
 
 
 def get_or_create_cart(request):
-    """Get or create cart for user or session"""
     if request.user.is_authenticated:
         cart, created = Cart.objects.get_or_create(user=request.user)
     else:
@@ -23,7 +22,6 @@ def get_or_create_cart(request):
 
 @require_POST
 def add_to_cart(request):
-    """Add product to cart via AJAX"""
     try:
         data = json.loads(request.body)
         product_id = data.get('product_id')
@@ -54,7 +52,6 @@ def add_to_cart(request):
 
 @require_POST
 def remove_from_cart(request):
-    """Remove item from cart"""
     try:
         data = json.loads(request.body)
         item_id = data.get('item_id')
@@ -74,7 +71,6 @@ def remove_from_cart(request):
 
 @require_POST
 def update_cart_quantity(request):
-    """Update cart item quantity"""
     try:
         data = json.loads(request.body)
         item_id = data.get('item_id')
@@ -100,7 +96,6 @@ def update_cart_quantity(request):
 
 @require_POST
 def clear_cart(request):
-    """Clear all items from the cart"""
     try:
         cart = get_or_create_cart(request)
         cart.items.all().delete()
@@ -115,7 +110,6 @@ def clear_cart(request):
 
 
 def cart_view(request):
-    """Display cart page"""
     cart = get_or_create_cart(request)
     context = {'cart': cart}
     return render(request, 'orders/cart.html', context)
@@ -123,7 +117,6 @@ def cart_view(request):
 
 @login_required
 def checkout(request):
-    """Checkout and create order"""
     cart = get_or_create_cart(request)
 
     if not cart.items.exists():
@@ -131,7 +124,6 @@ def checkout(request):
         return redirect('products:list')
 
     if request.method == 'POST':
-        # Create order
         order = Order.objects.create(
             user=request.user,
             full_name=request.POST.get('full_name', request.user.full_name),
@@ -142,7 +134,6 @@ def checkout(request):
             total_amount=cart.total_price
         )
 
-        # Create order items
         for cart_item in cart.items.all():
             OrderItem.objects.create(
                 order=order,
@@ -152,15 +143,12 @@ def checkout(request):
                 price=cart_item.product.final_price
             )
 
-        # Generate WhatsApp link
         whatsapp_link = order.generate_whatsapp_link()
 
-        # Clear cart after checkout
         cart.items.all().delete()
 
         messages.success(request, 'تم إنشاء الطلب بنجاح')
 
-        # Redirect to WhatsApp
         return redirect(whatsapp_link)
 
     context = {'cart': cart}

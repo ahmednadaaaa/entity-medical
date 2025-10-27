@@ -5,7 +5,6 @@ from django.contrib import messages
 from .models import CustomUser
 
 def register_view(request):
-    """User registration"""
     if request.user.is_authenticated:
         return redirect('home')
     
@@ -16,7 +15,6 @@ def register_view(request):
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
         
-        # Validation
         if password != confirm_password:
             messages.error(request, 'كلمة المرور غير متطابقة')
             return render(request, 'users/register.html')
@@ -25,7 +23,6 @@ def register_view(request):
             messages.error(request, 'رقم الهاتف مسجل مسبقاً')
             return render(request, 'users/register.html')
         
-        # Create user
         user = CustomUser.objects.create_user(
             phone=phone,
             password=password,
@@ -40,7 +37,6 @@ def register_view(request):
     return render(request, 'users/register.html')
 
 def login_view(request):
-    """User login"""
     if request.user.is_authenticated:
         return redirect('home')
     
@@ -61,20 +57,17 @@ def login_view(request):
 
 @login_required
 def logout_view(request):
-    """User logout"""
     logout(request)
     messages.success(request, 'تم تسجيل الخروج بنجاح')
     return redirect('home')
 
 @login_required
 def profile_view(request):
-    """User profile"""
     if request.method == 'POST':
         user = request.user
         user.full_name = request.POST.get('full_name', user.full_name)
         user.email = request.POST.get('email', user.email)
         
-        # Update password if provided
         new_password = request.POST.get('new_password')
         if new_password:
             user.set_password(new_password)

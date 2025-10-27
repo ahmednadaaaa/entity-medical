@@ -3,7 +3,6 @@ from django.contrib import messages
 from .models import Contact, Newsletter
 
 def contact_view(request):
-    """Contact form - حفظ بيانات نموذج التواصل"""
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -11,10 +10,8 @@ def contact_view(request):
         subject = request.POST.get('subject')
         message = request.POST.get('message')
         
-        # التحقق من البيانات قبل الحفظ
         if name and email and phone and subject and message:
             try:
-                # إنشاء سجل جديد في قاعدة البيانات
                 Contact.objects.create(
                     name=name,
                     email=email,
@@ -33,12 +30,10 @@ def contact_view(request):
 
 
 def newsletter_subscribe(request):
-    """Newsletter subscription - الاشتراك في النشرة البريدية"""
     if request.method == 'POST':
         email = request.POST.get('email')
         
         if email:
-            # التحقق من عدم وجود البريد مسبقاً
             if Newsletter.objects.filter(email=email).exists():
                 messages.warning(request, 'هذا البريد مشترك بالفعل في النشرة البريدية')
             else:

@@ -2,7 +2,6 @@ from django.db import models
 from django.utils import timezone
 
 class Contact(models.Model):
-    # ✅ القيم بالعربي لتطابق الـ HTML
     SUBJECT_CHOICES = [
         ('استفسار عن منتج', 'استفسار عن منتج'),
         ('طلب عرض سعر', 'طلب عرض سعر'),

@@ -8,7 +8,6 @@ from products.models import Category, Product
 from .models import Offer, OfferProduct
 
 def offers_list(request):
-    """Display all active offers with optional category filtering"""
     now = timezone.now()
     offers = Offer.objects.filter(
         is_active=True,
@@ -16,7 +15,6 @@ def offers_list(request):
         end_date__gte=now
     ).prefetch_related('products__product')
 
-    # Category filtering
     category_slug = request.GET.get('category')
     if category_slug:
         try:
@@ -25,7 +23,6 @@ def offers_list(request):
         except Category.DoesNotExist:
             messages.warning(request, 'الفئة المحددة غير موجودة')
 
-    # Search functionality
     search_query = request.GET.get('search')
     if search_query:
         offers = offers.filter(
@@ -34,7 +31,6 @@ def offers_list(request):
             Q(products__product__name__icontains=search_query)
         ).distinct()
 
-    # Get all active categories for filter dropdown
     categories = Category.objects.filter(is_active=True)
 
     context = {
@@ -46,16 +42,13 @@ def offers_list(request):
     return render(request, 'offers/offers.html', context)
 
 def offer_detail(request, offer_id):
-    """Display details of a specific offer"""
     offer = get_object_or_404(Offer, id=offer_id, is_active=True)
     
-    # Check if offer is valid
     now = timezone.now()
     if not (offer.start_date <= now <= offer.end_date):
         messages.warning(request, 'هذا العرض غير متاح حالياً')
         return redirect('offers:list')
 
-    # Get products associated with this offer
     offer_products = OfferProduct.objects.filter(offer=offer).select_related('product')
     
     context = {
@@ -66,7 +59,6 @@ def offer_detail(request, offer_id):
 
 @require_POST
 def apply_offer_to_cart(request):
-    """Apply offer to cart via AJAX (e.g., add all offer products to cart)"""
     try:
         data = json.loads(request.body)
         offer_id = data.get('offer_id')

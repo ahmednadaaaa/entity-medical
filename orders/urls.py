@@ -9,7 +9,6 @@ urlpatterns = [
     path('orders/', views.order_list, name='list'),
     path('orders/<str:order_number>/', views.order_detail, name='detail'),
 
-    # Cart operations
     path('add-to-cart/', views.add_to_cart, name='add_to_cart'),
     path('update-quantity/', views.update_cart_quantity, name='update_quantity'),
     path('remove-from-cart/', views.remove_from_cart, name='remove_from_cart'),

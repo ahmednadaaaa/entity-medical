@@ -5,7 +5,6 @@ from .models import Category, Product, Review
 from django.core.paginator import Paginator
 
 def home(request):
-    """عرض الصفحة الرئيسية مع الفئات والمنتجات المميزة"""
     featured_products = Product.objects.filter(is_active=True, is_featured=True)[:4]
     categories = Category.objects.filter(is_active=True)[:6]
     return render(request, 'index.html', {
@@ -15,11 +14,9 @@ def home(request):
     
     
 def products_list(request):
-    """Display all products with categories"""
     categories = Category.objects.filter(is_active=True)
     products = Product.objects.filter(is_active=True)
     
-    # Search functionality
     search_query = request.GET.get('search', '')
     if search_query:
         products = products.filter(
@@ -35,14 +32,11 @@ def products_list(request):
     return render(request, 'products/products.html', context)
 
 def product_detail(request, slug):
-    """Display single product with details"""
     product = get_object_or_404(Product, slug=slug, is_active=True)
     
-    # Increment views
     product.views += 1
     product.save(update_fields=['views'])
     
-    # Get related products
     related_products = Product.objects.filter(
         category=product.category,
         is_active=True
