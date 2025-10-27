@@ -442,21 +442,75 @@
     <nav class="navbar">
         <div class="container">
             <div class="logo">
+                <a href="/">
                 <img src="{% static 'images/med image.jpg' %}" alt="Entity Medical Logo">
             </div>
             <ul class="nav-links">
-                <li><a href="/">الرئيسية</a></li>
-                <li><a href="{% url 'products:home' %}">المنتجات</a></li>
-                <li><a href="{% url 'offers:list' %}" class="active">العروض</a></li>
-                <li><a href="{% url 'about' %}">حول</a></li>
-                <li><a href="">تواصل معنا</a></li>
+                <!-- الرئيسية -->
+                <li>
+                    <a href="{% url 'home' %}" {% if request.path == '/' %}class="active"{% endif %}>
+                        الرئيسية
+                    </a>
+                </li>
+    
+                <!-- المنتجات -->
+                <li>
+                    <a href="{% url 'products:home' %}" {% if 'products' in request.path %}class="active"{% endif %}>
+                        المنتجات
+                    </a>
+                </li>
+    
+                <!-- العروض -->
+                <li>
+                    <a href="{% url 'offers:list' %}" {% if 'offers' in request.path %}class="active"{% endif %}>
+                        العروض
+                    </a>
+                </li>
+    
+                <!-- حول -->
+                <li>
+                    <a href="{% url 'about' %}" {% if request.path == '/about/' %}class="active"{% endif %}>
+                        حول
+                    </a>
+                </li>
+    
+                <!-- تواصل معنا -->
+                <li>
+                    <a href="{% url 'contact:contact' %}" {% if request.path == '/contact/' %}class="active"{% endif %}>
+                        تواصل معنا
+                    </a>
+                </li>
+    
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'users:profile' %}">الملف الشخصي</a></li>
-                    <li><a href="{% url 'users:logout' %}">تسجيل الخروج</a></li>
+                    <!-- الملف الشخصي -->
+                    <li>
+                        <a href="{% url 'users:profile' %}" class="profile-link">
+                            الملف الشخصي
+                        </a>
+                    </li>
+    
+                    <!-- تسجيل الخروج -->
+                    <li>
+                        <a href="{% url 'users:logout' %}" class="logout-link">
+                            تسجيل الخروج
+                        </a>
+                    </li>
                 {% else %}
-                    <li><a href="{% url 'users:login' %}">تسجيل الدخول</a></li>
-                    <li><a href="{% url 'users:register' %}">إنشاء حساب</a></li>
+                    <!-- تسجيل الدخول -->
+                    <li>
+                        <a href="{% url 'users:login' %}" class="login-link">
+                            تسجيل الدخول
+                        </a>
+                    </li>
+    
+                    <!-- إنشاء حساب -->
+                    <li>
+                        <a href="{% url 'users:register' %}" class="register-link">
+                            إنشاء حساب
+                        </a>
+                    </li>
                 {% endif %}
+    
                 <li class="cart-icon-container">
                     <a href="#" class="cart-icon" onclick="toggleCart()">
                         <i class="fas fa-shopping-cart"></i>
@@ -466,7 +520,6 @@
             </ul>
         </div>
     </nav>
-
     <!-- قسم تفاصيل العرض -->
     <section class="offer-detail-section">
         <div class="offer-detail-container">

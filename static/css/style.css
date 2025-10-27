@@ -68,27 +68,6 @@ body {
 #title{
     color: white;
 }
-
-.special-i {
-    position: relative;
-    display: inline-block;
-    font-size: 1em;
-    transform: translateY(3px);
-}
-
-.special-i::after {
-    content: '' !important;
-    position: absolute !important;
-    top: 100% !important;
-    left: 50% !important;
-    transform: translateX(-53%) !important;
-    width: 0 !important;
-    height: 0 !important;
-    border-left: 14px solid transparent !important;
-    border-right: 14px solid transparent !important;
-    border-top: 20px solid black !important;
-    margin-top: -90.5px !important;
-}
 .nav-links {
     display: flex;
     list-style: none;
@@ -105,39 +84,6 @@ body {
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--secondary-color);
-}
-
-/* Login and Register Links Styling */
-.login-link {
-    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-    color: white !important;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(27, 155, 216, 0.3);
-}
-
-.login-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(27, 155, 216, 0.4);
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-}
-
-.register-link {
-    background: linear-gradient(135deg, var(--third-color) 0%, #2c3e50 100%);
-    color: white !important;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(27, 40, 72, 0.3);
-}
-
-.register-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(27, 40, 72, 0.4);
-    background: linear-gradient(135deg, #2c3e50 0%, var(--third-color) 100%);
 }
 
 /* القسم الرئيسي */
@@ -490,17 +436,6 @@ footer::before {
     .features h2 {
         font-size: 2rem;
         margin-bottom: 2rem;
-    }
-    
-    /* Mobile Navigation Adjustments */
-    .nav-links {
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-    
-    .login-link, .register-link {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
     }
 }
 

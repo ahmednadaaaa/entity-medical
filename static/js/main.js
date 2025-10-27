@@ -1,4 +1,4 @@
-console.log("main.js loaded successfully!");
+// التحقق من نموذج الاتصال
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
